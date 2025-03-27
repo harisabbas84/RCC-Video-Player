@@ -7,6 +7,195 @@
   <title>Video Player</title>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
+
+.hidden-element {
+  display: none; /* This element is hidden and does nothing */
+}
+
+.invisible-box {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.complex-animation {
+  animation: dummyAnimation 5s infinite alternate;
+}
+
+@keyframes dummyAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.unused-media-query {
+  @media (min-width: 2000px) {
+    .container {
+      border: 1px solid transparent; /* Does nothing visually */
+    }
+  }
+}
+
+.debugging-helper {
+  outline: 1px solid rgba(255, 0, 0, 0); /* Invisible outline */
+}
+
+.experimental-feature {
+  mask-image: linear-gradient(to bottom, transparent, black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+  mask-size: 0%;
+  -webkit-mask-size: 0%;
+}
+
+.future-proofing {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.placeholder-comment {
+  /* Placeholder for future development */
+}
+
+.deprecated-class {
+  text-decoration: underline dotted red;
+  visibility: hidden;
+}
+
+.unused-pseudo-class {
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.unused-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0;
+  visibility: hidden;
+}
+
+.unused-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.unused-transform {
+  transform: scale(1) rotate(0deg) translate(0px, 0px);
+  transition: all 0.3s ease-in-out;
+}
+
+.unused-shadow {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.unused-gradient {
+  background: linear-gradient(135deg, transparent, transparent);
+}
+
+.unused-transition {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.unused-filter {
+  filter: blur(0px) brightness(100%) contrast(100%);
+}
+
+.unused-border {
+  border: 1px solid transparent;
+  border-radius: 0;
+}
+
+.unused-position {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.unused-zindex {
+  z-index: 1;
+}
+
+.unused-opacity {
+  opacity: 1;
+}
+
+.unused-pointer {
+  pointer-events: auto;
+}
+
+.unused-cursor {
+  cursor: default;
+}
+
+.unused-overflow {
+  overflow: hidden;
+}
+
+.unused-padding {
+  padding: 0;
+}
+
+.unused-margin {
+  margin: 0;
+}
+
+.unused-text {
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-indent: 0;
+  text-transform: none;
+  text-align: left;
+  text-shadow: 0 0 0 transparent;
+}
+
+.unused-background {
+  background-color: transparent;
+  background-image: none;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.unused-list {
+  list-style-type: none;
+}
+
+.unused-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.unused-svg {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 0;
+}
+
+.unused-keyframe {
+  @keyframes unusedKeyframe {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+  
     body {
       margin: 0;
       padding: 0;
