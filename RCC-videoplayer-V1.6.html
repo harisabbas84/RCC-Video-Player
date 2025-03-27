@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <title>Video Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/background.png') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 900px;
+      height: 600px;
+    }
+
+    .wood-desk {
+      position: absolute;
+      bottom: -170px;
+      width: 150%;
+      left: -230px;
+    }
+
+    .laptop {
+      position: absolute;
+      bottom: 24px;
+      left: 49%;
+      transform: translateX(-50%);
+      width: 99%;
+      height: 579px;
+    }
+
+    .video-container {
+      position: absolute;
+      left: 49%;
+      transform: translate(-50%, -50%);
+      width: 93%;
+      height: 92%;
+      overflow: hidden;
+      border-radius: 5px;
+      z-index: 99999;
+    }
+
+    @media (min-width: 551px) {
+      .video-container {
+        top: 50%;
+      }
+    }
+
+   video {
+      width: 100%;
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 5px;
+      will-change: transform; 
+    }
+
+    .helmet {
+      display: none;
+    }
+
+    .ruler {
+      position: absolute;
+      bottom: -137px;
+      right: 300px;
+      width: 430px;
+    }
+
+    .pencil {
+      position: absolute;
+      bottom: -137px;
+      right: 270px;
+      width: 430px;
+    }
+
+    .text-frame {
+      position: absolute;
+      top: -167px;
+      left: 51%;
+      transform: translateX(-50%);
+      width: 64%;
+      text-align: center;
+      height: 166px;
+    }
+
+    .top-logo {
+      position: absolute;
+      top: -140px;
+      left: -109px;
+      transform: translateX(-50%);
+    }
+
+    .download-button {
+      position: absolute;
+      right: 20px;
+      background: #ffffffcc;
+      border: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999999;
+      bottom: -20px;
+      font-weight:bold;
+    }
+
+    .download-button:hover {
+      background: #fff;
+      font-weight: bold;
+    }
+    .social-icons {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  z-index: 9999;
+  display:none;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+  display:none;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+.text-overlay {
+    position: absolute;
+    top: -111px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 60%;
+    font-size: 56px;
+    font-weight: bold;
+    color: black;
+    z-index: 9999;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+    @media (max-width: 550px) {
+      body {
+        background: url('https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/background.png') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .social-icons {
+    flex-direction: column;
+    left: 10px;
+    bottom: 80px;
+    display:none;
+  }
+
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+    display:none;
+  }
+
+      .top-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-54%);
+        top: 45px;
+        width: 158px;
+      }
+
+      .text-frame {
+        position: absolute;
+        top: auto;
+        bottom: 476px;
+        left: 50%;
+        height: 102px;
+        display: block;
+        z-index: 4;
+        width:95%;
+      }
+
+      .laptop {
+        position: absolute;
+        width: 90%;
+        bottom: 244px;
+        left: 50%;
+        height: 233px;
+        display: block;
+        z-index: 2;
+      }
+
+      .video-container {
+        position: absolute;
+        margin-left: 4px;
+        bottom: 142px;
+        width: 86%;
+        transform: translate(-50%, -50%);
+        height: 218px;
+        z-index: 3;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .ruler {
+        position: absolute;
+        bottom: 160px;
+        height: 190px;
+        left: 42%;
+        transform: translateX(-50%);
+        top: auto;
+        right: auto;
+        width: auto;
+        z-index: 2;
+      }
+
+      .pencil {
+        position: absolute;
+        bottom: 137px;
+        height: 190px;
+        left: 4%;
+        left: 46%;
+        transform: translateX(-50%);
+        top: auto;
+        right: auto;
+        width: auto;
+      }
+
+      .wood-desk {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        height: 260px;
+        left: 0;
+      }
+
+      .download-button {
+        position: absolute;
+        right: 20px;
+        background: white;
+        border: none;
+        padding: 10px 18px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 999999;
+        bottom: 107px;
+        font-weight:bold;
+      }
+        .text-overlay {
+          position: absolute;
+        top: auto;
+        font-size: 20px;
+        bottom: 431px;
+        left: 50%;
+        height: 102px;
+        display: block;
+        z-index: 4;
+        width: 85%;
+    }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/desk.png"
+      class="wood-desk" />
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE+ASSETS+PNG/tablet+1.png"
+      class="laptop" />
+    <div class="video-container">
+      <video id="video" controls></video>
+    </div>
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/stand.png"
+      class="ruler" />
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/stand+shadow.png"
+      class="pencil" />
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/text+frame.png"
+      class="text-frame" />
+      <div class="text-overlay">{{video_desc}}</div>
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE ASSETS PNG/logo.png"
+      class="top-logo" />
+    <button onclick="downloadVideo()" style="padding: 10px 20px; display: flex; align-items: center; gap: 10px;" class="download-button">
+    <img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE+ASSETS+PNG/download.png" alt="Download" style="width: 20px; height: 20px;">
+    <span>Download</span>
+</button>
+<div class="social-icons">
+  <a href="#" target="_blank"><img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE+ASSETS+PNG/linkedin.png" alt="LinkedIn" /></a>
+  <a href="#" target="_blank"><img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE+ASSETS+PNG/instagram.png" alt="Instagram" /></a>
+  <a href="#" target="_blank"><img src="https://myhlsmedia.s3.eu-north-1.amazonaws.com/video-player/MOBILE+ASSETS+PNG/twitter.png" alt="Twitter" /></a>
+</div>
+
+  </div>
+
+  <script>
+    var video = document.getElementById('video');
+
+    var videoSrc = "{{m3u8_url}}";
+
+    var mp4DownloadUrl = "{{mp4_url}}";
+
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = videoSrc;
+      video.addEventListener('loadedmetadata', function () {
+        video.play();
+      });
+    }
+
+    function downloadVideo() {
+      const link = document.createElement('a');
+      link.href = mp4DownloadUrl;
+      link.download = 'video.mp4';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
+  </script>
+</body>
+</html>
